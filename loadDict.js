@@ -1,4 +1,6 @@
+var loadDict;
 
+function() {
 const DICT_IN_LANKKI_MIUKKU = [];
 
 var readDictionary = function(filePath, callBack) {
@@ -33,11 +35,22 @@ readDictionary("dicts/finnish_words.txt", function(d) {
         DICT_IN_LANKKI_MIUKKU.push(w);
     }
     dictInLankkiMiukkuReady = true;
+    for (let cB of callBacksForDict) {
+        cB(DICT_IN_LANKKI_MIUKKU);
+    }
 });
 
 
 
-var loadDict = function(callBack) {
+loadDict = function(callBack) {
     //readDictionary("dicts/finnish_words.txt", callBack);
-    
+    if (typeof callBack === "function") {
+        if (dictInLankkiMiukkuReady) {
+            callBack(DICT_IN_LANKKI_MIUKKU);
+        } else {
+            callBacksForDict.push(callBack);
+        }
+    }
 };
+    
+}();
