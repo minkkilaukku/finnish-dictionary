@@ -1,6 +1,6 @@
 var loadDict;
 
-function() {
+(function() {
 const DICT_IN_LANKKI_MIUKKU = [];
 
 var readDictionary = function(filePath, callBack) {
@@ -53,4 +53,4 @@ loadDict = function(callBack) {
     }
 };
     
-}();
+})();
