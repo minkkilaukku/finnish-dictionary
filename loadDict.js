@@ -1,4 +1,6 @@
 
+const DICT_IN_LANKKI_MIUKKU = [];
+
 var readDictionary = function(filePath, callBack) {
     var dict = [];
     var rawFile = new XMLHttpRequest();
@@ -23,15 +25,19 @@ var readDictionary = function(filePath, callBack) {
 
 
 
-var loadDict = function(callBack) {
-    readDictionary("dicts/finnish_words.txt", callBack);
-};
+var dictInLankkiMiukkuReady = false;
+var callBacksForDict = [];
 
-
-/*
 readDictionary("dicts/finnish_words.txt", function(d) {
     for (let w of d) {
-        DICT.push(w);
+        DICT_IN_LANKKI_MIUKKU.push(w);
     }
+    dictInLankkiMiukkuReady = true;
 });
-*/
+
+
+
+var loadDict = function(callBack) {
+    //readDictionary("dicts/finnish_words.txt", callBack);
+    
+};
